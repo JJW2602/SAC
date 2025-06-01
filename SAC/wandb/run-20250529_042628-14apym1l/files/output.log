@@ -1,0 +1,33 @@
+/root/DILLAB/.conda/lib/python3.11/site-packages/gymnasium/envs/registration.py:519: DeprecationWarning: [33mWARN: The environment Hopper-v4 is out of date. You should consider upgrading to version `v5`.[0m
+  logger.deprecation(
+  0%|                                                                                                                                                          | 0/300000 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/root/DILLAB/SAC/Run.py", line 78, in <module>
+    main()
+  File "/root/DILLAB/SAC/Run.py", line 74, in main
+    running_training_loop()
+  File "/root/DILLAB/SAC/Run.py", line 28, in running_training_loop
+    action = agent.policy.get_action(obs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/DILLAB/SAC/agent.py", line 72, in get_action
+    mean, std = self(obs)
+                ^^^^^^^^^
+  File "/root/DILLAB/.conda/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/DILLAB/.conda/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/DILLAB/SAC/agent.py", line 54, in forward
+    x = F.tanh(self.fc1(x))
+               ^^^^^^^^^^^
+  File "/root/DILLAB/.conda/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/DILLAB/.conda/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/DILLAB/.conda/lib/python3.11/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: linear(): argument 'input' (position 1) must be Tensor, not numpy.ndarray

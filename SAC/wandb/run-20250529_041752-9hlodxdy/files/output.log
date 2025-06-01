@@ -1,0 +1,11 @@
+/root/DILLAB/.conda/lib/python3.11/site-packages/gymnasium/envs/registration.py:519: DeprecationWarning: [33mWARN: The environment Hopper-v4 is out of date. You should consider upgrading to version `v5`.[0m
+  logger.deprecation(
+Traceback (most recent call last):
+  File "/root/DILLAB/SAC/Run.py", line 79, in <module>
+    main()
+  File "/root/DILLAB/SAC/Run.py", line 75, in main
+    running_training_loop()
+  File "/root/DILLAB/SAC/Run.py", line 21, in running_training_loop
+    replaybuffer = ReplayBuffer(max_capacity, device)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ReplayBuffer.__init__() takes 2 positional arguments but 3 were given

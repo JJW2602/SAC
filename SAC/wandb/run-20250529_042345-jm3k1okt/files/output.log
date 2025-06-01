@@ -1,0 +1,14 @@
+/root/DILLAB/.conda/lib/python3.11/site-packages/gymnasium/envs/registration.py:519: DeprecationWarning: [33mWARN: The environment Hopper-v4 is out of date. You should consider upgrading to version `v5`.[0m
+  logger.deprecation(
+Traceback (most recent call last):
+  File "/root/DILLAB/SAC/Run.py", line 78, in <module>
+    main()
+  File "/root/DILLAB/SAC/Run.py", line 74, in main
+    running_training_loop()
+  File "/root/DILLAB/SAC/Run.py", line 23, in running_training_loop
+    agent = Agent(obs_dim, action_dim)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/DILLAB/SAC/SAC_agent.py", line 10, in __init__
+    self.q_function1 = QFunction(obs_dim + action_dim, 1)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: QFunction.__init__() missing 1 required positional argument: 'gamma'
