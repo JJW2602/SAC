@@ -19,13 +19,14 @@ class Agent():
 
     def v_update(self, batch):
         obs : torch.tensor = batch['observations']
-        
+        done =batch['dones']
+
         with torch.no_grad():
             action_distribution = self.policy(obs)
             sample_actions = ut.from_numpy(self.policy.get_action(ut.to_numpy(obs)))
             #q_min이 제대로 출력되는지? -> self.q_function1, q_fuction2비교할 것. element-wise가 아닌 것을 확인할 것
             q_min = torch.min(self.q_function1(obs, sample_actions), self.q_function2(obs,sample_actions))
-            target_value = q_min + self.entropy(action_distribution) #여기는 state마다 action을 하나씩 뽑아서 따로 mean을 안해도 되는건지??
+            target_value = (1.0-done.float()) * (q_min + self.entropy(action_distribution)) #여기는 state마다 action을 하나씩 뽑아서 따로 mean을 안해도 되는건지??
  
         loss = F.mse_loss(self.value_function(obs), target_value) 
 
