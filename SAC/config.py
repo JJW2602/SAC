@@ -1,29 +1,24 @@
 from gymnasium.wrappers import RescaleAction, ClipAction, RecordEpisodeStatistics
 import gymnasium as gym
+import torch
 
 env_name : str = 'Hopper-v4'
-training_starts : int = 10000
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
 total_steps :int = 300000
-sample_batch_size :int  = 128
+random_steps : int = 10000
+training_starts : int = 10000
+
 max_capacity : int = 1000000
+sample_batch_size :int  = 256
+
 discount : float = 0.99
 temperature : float = 0.1
-num_layers : int = 3
-eval_period : int = 1000
-hidden_size : int = 128
 tau : float = 0.005
 learning_rate : float = 3e-4
-num_eval_trajectories : int = 10
+num_layers : int = 3
+hidden_size : int = 256
 
-def make_env(render: bool = False):
-    return RecordEpisodeStatistics(
-        ClipAction(
-            RescaleAction(
-                gym.make(
-                    env_name, render_mode="single_rgb_array" if render else None
-                ),
-                -1,
-                1,
-            )
-        )
-    )
+eval_period : int = 1000
+num_eval_trajectories : int = 10

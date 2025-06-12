@@ -1,0 +1,11 @@
+/usr/local/lib/python3.10/dist-packages/gymnasium/envs/registration.py:519: DeprecationWarning: [33mWARN: The environment Hopper-v4 is out of date. You should consider upgrading to version `v5`.[0m
+  logger.deprecation(
+  0%|                                                                                                                                                                                                                                                                               | 0/300000 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/root/DILLAB/SAC/run.py", line 82, in <module>
+    main()
+  File "/root/DILLAB/SAC/run.py", line 78, in main
+    running_training_loop()
+  File "/root/DILLAB/SAC/run.py", line 35, in running_training_loop
+    replaybuffer.store(obs, reward, action, next_obs, trunc, done)
+TypeError: ReplayBuffer.store() takes 6 positional arguments but 7 were given

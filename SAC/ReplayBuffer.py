@@ -1,7 +1,4 @@
-from collections import deque
-import torch
 import numpy as np
-import random
 
 class ReplayBuffer:
     def __init__(self,max_capacity):
@@ -14,6 +11,14 @@ class ReplayBuffer:
         self.dones = None
 
     def store(self, obs : np.ndarray, action, reward, next_obs, done):
+        
+        if isinstance(reward, (float, int)):
+            reward = np.array(reward)
+        if isinstance(done, bool):
+            done = np.array(done)
+        if isinstance(action, int):
+            action = np.array(action, dtype=np.int64)
+
         if self.observations is None:
             self.observations = np.empty((self.max_size, *obs.shape),dtype=obs.dtype)
             self.actions = np.empty((self.max_size, *action.shape), dtype=action.dtype)
@@ -30,7 +35,6 @@ class ReplayBuffer:
 
     def sample(self, sample_batch_size):
         random_indices = (np.random.randint(0, self.size, size = (sample_batch_size,)) % self.max_size)
-        print(random_indices)
         return {
             "observations": self.observations[random_indices],
             "actions": self.actions[random_indices],

@@ -1,20 +1,6 @@
-import torch
-import numpy as np
+
 import gymnasium as gym
-
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-def build_mlp():
-    pass
-
-def from_numpy(data):
-    if isinstance(data, dict):
-        return {k: from_numpy(v) for k, v in data.items()}
-    else:
-        data = torch.from_numpy(data)
-        if data.dtype == torch.float64:
-            data = data.float()
-        return data.to(device)
+import numpy as np
 
 def sample_trajectory(
     env: gym.Env, policy , max_length: int, render: bool = False
